@@ -1,15 +1,11 @@
 import './App.css';
 import React from 'react';
-import AppItem from './AppItem';
-import NoName from './NoName';
-import Hello from './Hello';
+import ExpensItem from './Components/ExpensItem';
 
 const App = () => {
   return (
     <>
-      <AppItem />
-      <NoName />
-      <Hello />
+      <ExpensItem title="샤인머스캣" />
     </>
   );
 };
