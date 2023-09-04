@@ -1,0 +1,14 @@
+import React from 'react';
+
+function NoName() {
+  return (
+    <div className="noName">
+      <input type="text" />
+      <p>
+        오늘은 태풍이와서 비가 많이 내렸다. <br /> 그래서 공부가 하기 싫다.
+      </p>
+    </div>
+  );
+}
+
+export default NoName;
