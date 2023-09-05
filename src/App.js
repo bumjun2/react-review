@@ -1,7 +1,6 @@
 import './App.css';
 import React from 'react';
 import ExpensList from './Components/ExpensList';
-import Hello from './Hello';
 
 const App = () => {
   const expenses = [
@@ -21,16 +20,11 @@ const App = () => {
       date: new Date(2023, 1 - 1, 23),
     },
   ];
+
+  console.log('App 실행');
   return (
     <>
       <ExpensList items={expenses} />
-      <Hello>
-        <ul>
-          <li>사과</li>
-          <li>포도</li>
-          <li>복숭아</li>
-        </ul>
-      </Hello>
     </>
   );
 };
