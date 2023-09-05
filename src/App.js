@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import ExpensItem from './Components/ExpensItem';
+import ExpensList from './Components/ExpensList';
 
 const App = () => {
   const expenses = [
@@ -22,21 +23,7 @@ const App = () => {
   ];
   return (
     <>
-      <ExpensItem
-        title={expenses[0].title}
-        price={expenses[0].price}
-        date={expenses[0].date}
-      />
-      <ExpensItem
-        title={expenses[1].title}
-        price={expenses[1].price}
-        date={expenses[1].date}
-      />
-      <ExpensItem
-        title={expenses[2].title}
-        price={expenses[2].price}
-        date={expenses[2].date}
-      />
+      <ExpensList items={expenses} />
     </>
   );
 };
