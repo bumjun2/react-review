@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpensItem.css';
 import ExpensDate from './ExpensDate';
-import Card from './UI/Card';
+import Card from '../UI/Card';
 
 const ExpensItem = ({ title, date, price }) => {
   //값이 변경되어 화면에 반영되어야 하는 값들은
@@ -26,7 +26,6 @@ const ExpensItem = ({ title, date, price }) => {
     //   //화면을 리렌더링하고 같을경우 렌더링하지 않음
     //   return '메롱';
     // });
-
     setItemTitle('메롱');
   };
 

@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
-import ExpensList from './Components/ExpensList';
+import ExpensList from './Components/Expenses/ExpensList';
+import NewExpens from './Components/NewExpens/NewExpens';
 
 const App = () => {
   const expenses = [
@@ -24,6 +25,7 @@ const App = () => {
   console.log('App 실행');
   return (
     <>
+      <NewExpens />
       <ExpensList items={expenses} />
     </>
   );
