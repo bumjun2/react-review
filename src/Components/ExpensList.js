@@ -15,9 +15,9 @@ const ExpensList = ({ items }) => {
         date={items[1].date}
       />
       <ExpensItem
-        title={items[1].title}
-        price={items[1].price}
-        date={items[1].date}
+        title={items[2].title}
+        price={items[2].price}
+        date={items[2].date}
       />
     </div>
   );
