@@ -2,34 +2,40 @@ import React, { useState } from 'react';
 import './ExpenseForm.css';
 
 const ExpenseForm = () => {
-  const [title, setTitle] = useState('');
-  const [price, setPrice] = useState('');
-  const [date, setDate] = useState('');
+  const [useInput, setuseInput] = useState({
+    title: '',
+    price: '',
+    date: '',
+  });
 
   const titleChangeHandler = (e) => {
-    setTitle(e.target.value);
+    setuseInput({
+      ...useInput,
+      title: e.target.value,
+    });
   };
   const priceChangeHandler = (e) => {
-    setPrice(e.target.value);
+    setuseInput({
+      ...useInput,
+      price: e.target.value,
+    });
   };
   const dateChangeHandler = (e) => {
-    setDate(e.target.value);
+    setuseInput({
+      ...useInput,
+      date: e.target.value,
+    });
   };
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    const newExpens = {
-      title: title,
-      price: price,
-      date: date,
-    };
-    console.log(newExpens);
-
-    //입력창 초기화
-    setTitle('');
-    setPrice('');
-    setDate('');
+    console.log(useInput);
+    setuseInput({
+      title: '',
+      price: '',
+      date: '',
+    });
   };
 
   return (
@@ -41,7 +47,7 @@ const ExpenseForm = () => {
             <input
               type="text"
               onChange={titleChangeHandler}
-              value={title}
+              value={useInput.title}
             />
           </div>
           <div className="new-expense__control">
@@ -51,7 +57,7 @@ const ExpenseForm = () => {
               min="100"
               step="100"
               onChange={priceChangeHandler}
-              value={price}
+              value={useInput.price}
             />
           </div>
           <div className="new-expense__control">
@@ -61,7 +67,7 @@ const ExpenseForm = () => {
               min="2019-01-01"
               max="2025-12-31"
               onChange={dateChangeHandler}
-              value={date}
+              value={useInput.date}
             />
           </div>
         </div>
