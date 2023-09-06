@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = () => {
+const ExpenseForm = ({ onSaveExpense }) => {
   const [useInput, setuseInput] = useState({
     title: '',
     price: '',
@@ -9,9 +9,11 @@ const ExpenseForm = () => {
   });
 
   const titleChangeHandler = (e) => {
-    setuseInput({
-      ...useInput,
-      title: e.target.value,
+    setuseInput((preveUserInput) => {
+      return {
+        ...preveUserInput,
+        title: e.target.value,
+      };
     });
   };
   const priceChangeHandler = (e) => {
@@ -30,7 +32,7 @@ const ExpenseForm = () => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    console.log(useInput);
+    onSaveExpense(useInput);
     setuseInput({
       title: '',
       price: '',

@@ -2,10 +2,10 @@ import React from 'react';
 import './NewExpens.css';
 import ExpenseForm from './ExpenseForm';
 
-const NewExpens = () => {
+const NewExpens = ({ onAddExpense }) => {
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      <ExpenseForm onSaveExpense={onAddExpense} />
     </div>
   );
 };

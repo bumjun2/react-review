@@ -22,10 +22,14 @@ const App = () => {
     },
   ];
 
-  console.log('App 실행');
+  const onAddExpenseHandler = (NewExpens) => {
+    console.log(NewExpens);
+    expenses.push(NewExpens);
+  };
+
   return (
     <>
-      <NewExpens />
+      <NewExpens onAddExpense={onAddExpenseHandler} />
       <ExpensList items={expenses} />
     </>
   );
