@@ -1,24 +1,35 @@
 import React from 'react';
 import ExpensItem from '../Expenses/ExpensItem';
+import ExpenseFilter from './ExpenseFilter';
 
 const ExpensList = ({ items }) => {
+  // 자식 컴퍼넌트 ExpensFilter에 있는
+  // 선택 연도를 끌어올리는 콜백 함수
+  const filterChangeHandler = (selectedYear) => {};
+
+  //ExpensItem을 동적 렌더링하기
+  // const iterateExpensItem = () => {
+  //   return items.map((item) => (
+  //     <ExpensItem
+  //       title={item.title}
+  //       price={item.price}
+  //       date={item.date}
+  //     />
+  //   ));
+  // };
+
   return (
     <div className="expense">
-      <ExpensItem
-        title={items[0].title}
-        price={items[0].price}
-        date={items[0].date}
-      />
-      <ExpensItem
-        title={items[1].title}
-        price={items[1].price}
-        date={items[1].date}
-      />
-      <ExpensItem
-        title={items[2].title}
-        price={items[2].price}
-        date={items[2].date}
-      />
+      <ExpenseFilter onChangeFilter={filterChangeHandler} />
+
+      {items.map(({ id, title, price, date }) => (
+        <ExpensItem
+          key={id}
+          title={title}
+          price={price}
+          date={date}
+        />
+      ))}
     </div>
   );
 };
