@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import ExpensList from './Components/Expenses/ExpensList';
 import NewExpens from './Components/NewExpens/NewExpens';
 
@@ -31,15 +31,18 @@ const App = () => {
     },
   ];
 
+  //지출객체배열을 상태변수로 관리
+  const [expenseList, setExpenseList] = useState(expenses);
+
   const onAddExpenseHandler = (NewExpens) => {
     console.log(NewExpens);
-    expenses.push(NewExpens);
+    setExpenseList([...expenseList, NewExpens]);
   };
 
   return (
     <>
       <NewExpens onAddExpense={onAddExpenseHandler} />
-      <ExpensList items={expenses} />
+      <ExpensList items={expenseList} />
     </>
   );
 };

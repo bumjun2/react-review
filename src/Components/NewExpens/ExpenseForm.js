@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 
-const ExpenseForm = ({ onSaveExpense }) => {
+const ExpenseForm = ({ onSaveExpense, onTogle }) => {
   const [useInput, setuseInput] = useState({
     title: '',
     price: '',
@@ -32,12 +32,22 @@ const ExpenseForm = ({ onSaveExpense }) => {
   const formSubmitHandler = (e) => {
     e.preventDefault();
 
-    onSaveExpense(useInput);
+    const NewExpens = {
+      id: Math.random(),
+      title: useInput.title,
+      price: useInput.price,
+      date: new Date(useInput.date),
+    };
+
+    onSaveExpense(NewExpens);
     setuseInput({
       title: '',
       price: '',
       date: '',
     });
+  };
+  const cancleInsertHandler = () => {
+    onTogle();
   };
 
   return (
@@ -74,6 +84,12 @@ const ExpenseForm = ({ onSaveExpense }) => {
           </div>
         </div>
         <div className="new-expense__actions">
+          <button
+            type="button"
+            onClick={cancleInsertHandler}
+          >
+            Cancel
+          </button>
           <button type="submit">Add Expense</button>
         </div>
       </form>

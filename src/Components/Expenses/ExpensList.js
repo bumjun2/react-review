@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ExpensItem from '../Expenses/ExpensItem';
 import ExpenseFilter from './ExpenseFilter';
+import './ExpensList.css';
 
 const ExpensList = ({ items }) => {
   // 선택된 연도 상태변수
@@ -24,20 +25,31 @@ const ExpensList = ({ items }) => {
   //   ));
   // };
 
-  return (
-    <div className="expense">
-      <ExpenseFilter onChangeFilter={filterChangeHandler} />
+  const filterdItems = items.filter(
+    (item) => item.date.getFullYear().toString() === filterdYear
+  );
 
-      {items
-        .filter((item) => item.date.getFullYear().toString() === filterdYear)
-        .map(({ id, title, price, date }) => (
-          <ExpensItem
-            key={id}
-            title={title}
-            price={price}
-            date={date}
-          />
-        ))}
+  let expensContent = <p>아직 등록된 지출이 없습니다.</p>;
+
+  if (filterdItems.length > 0) {
+    expensContent = filterdItems.map(({ id, title, price, date }) => (
+      <ExpensItem
+        key={id}
+        title={title}
+        price={price}
+        date={date}
+      />
+    ));
+  }
+
+  return (
+    <div className="expenses">
+      <ExpenseFilter
+        onChangeFilter={filterChangeHandler}
+        selectd={filterdYear}
+      />
+
+      {expensContent}
     </div>
   );
 };
